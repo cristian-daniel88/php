@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="developer,php,javascript,react,mongodb,fullstack">
+    <title>Task | Cristian Herrera </title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="libs/css/style.css" />
+  </head>
+  <body>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>API name</th>
+          <th>API description</th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        
+        <tr>
+          <td><label >1. Country code</label></td>
+          <td>
+            <select id="countryCode">
+              <option value="47.3%9%Switzerland">Switzerland</option>
+              <option value="-34.6%-58.37%Argentina">Argentina</option>
+              <option value="-34.88%-56.15%Uruguay">Uruguay</option>
+            </select>
+          </td>
+          <td><input type="submit" value="Submit" id="submitCountryCode" /></td>
+        </tr>
+        
+        <tr>
+          <td><label >2. Country time</label></td>
+          <td>
+            <select id="countryTime">
+              <option value="47.3%9%Switzerland">Switzerland</option>
+              <option value="-34.6%-58.37%Argentina">Argentina</option>
+              <option value="-34.88%-56.15%Uruguay">Uruguay</option>
+            </select>
+          </td>
+          <td><input type="submit" value="Submit" id="submitCountryTime" /></td>
+        </tr>
+        
+        <tr>
+          <td><label >3. Country population</label></td>
+          <td>
+            <select id="countryPopulation">
+              <option value="CH%Switzerland">Switzerland</option>
+              <option value="AR%Argentina">Argentina</option>
+              <option value="UY%Uruguay">Uruguay</option>
+            </select>
+          </td>
+          <td><input type="submit" value="Submit" id="submitCountryPopulation" /></td>
+        </tr>
+        
+      </tbody>
+      
+      <tfoot>
+        
+        <tr>
+          <td></td>
+          <td id="txtCountryCode"></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td id="txtCountryTime"><span>Results:</span></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td id="txtCountryPopulation"></td>
+          <td></td>
+        </tr>
+        
+      </tfoot>
+      
+    </table>
+    
+    <div id="preloader"></div>
+
+    <script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+    <script type="application/javascript" src="libs/js/script.js"></script>
+  </body>
+  </html>
+  
+  <!--
+    
+    COUNTRY CODE 
+    
+  switzerland
+  http://api.geonames.org/findNearbyPlaceNameJSON?formatted=true&lat=47.3&lng=9&username=cristian&style=full
+  
+  argentina 
+  http://api.geonames.org/findNearbyPlaceNameJSON?formatted=true&lat=-34.6&lng=-58.37&username=cristian&style=full
+  
+  uruguay
+  http://api.geonames.org/findNearbyPlaceNameJSON?formatted=true&lat=-34.88&lng=-56.15&username=cristian&style=full
+
+ -->
+  
+
+ <!--
+
+  COUNTRY TIME
+
+  switzerland
+  http://api.geonames.org/timezoneJSON?formatted=true&lat=47.3&lng=9&username=cristian&style=full
+
+  argentina
+  http://api.geonames.org/timezoneJSON?formatted=true&lat=-34.6&lng=-58.37&username=cristian&style=full
+
+  uruguay
+  http://api.geonames.org/timezoneJSON?formatted=true&lat=-34.88&lng=-56.15&username=cristian&style=full
+
+ -->
+   
+
+<!-- 
+
+  COUNTRY POPULATION
+
+  switzerland
+  http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=CH&username=cristian&style=full
+  
+  argentina
+  http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=AR&username=cristian&style=full
+
+  uruguay
+  http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=UY&username=cristian&style=full
+
+
+ -->

@@ -1,0 +1,459 @@
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #f2f2f2;
+  border-top: 6px solid #56829e;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-preloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+article p {
+  font-size: 13px;
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+  position: relative;  
+}
+
+#modalInfo, #modalCurrency, #modalWeather, #modalWikipedia , #modalCovid, #modalNews {
+  display: none !important;
+}
+
+.modal {
+  z-index: 50000000000;
+  top: 10%;
+}
+
+
+/* i */
+.i-container .fa-circle-info, .i-container .fa-circle-dollar-to-slot, .i-container .fa-circle-dollar-to-slot, .i-container .fa-cloud-sun, .i-container .fa-wikipedia-w, .i-container .fa-virus, .i-container .fa-newspaper {
+  font-size: 30px;
+}
+
+.fa-circle-info {
+  color: #406398;
+  font-size: 20px;
+  margin-top: 30%;
+  margin-right: 40%;
+}
+
+
+
+.fa-circle-dollar-to-slot {
+  background-color: #fff;
+  color: green;
+  font-size: 20px;
+}
+
+.i-container .fa-cloud-sun {
+  color: #fff;
+}
+
+.fa-cloud-sun {
+  font-size: 15px;
+  color: #a8996a;
+}
+
+.fa-wikipedia-w {
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.fa-virus {
+  font-size: 20px;
+  color: #b461b0;
+}
+
+.fa-newspaper {
+  font-size: 20px;
+  color: grey;
+  margin-top: 20%;
+  margin-right: 25%;
+}
+
+/*  */
+
+
+.modal-header h3 {
+  text-align: center;
+  display: inline;  
+  margin: auto;
+}
+
+
+
+
+.selectcontainer {
+  position: absolute;
+  z-index: 500;
+  top: 1.6%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 55%;
+}
+
+
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  Weather Box */
+
+.weatherContainer {
+  background-image: url('../../assets/sky.jpg');
+  width: 100%;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+  
+}
+
+.titleWeatherContainer {
+  display: flex;
+}
+
+.titleWeatherContainer p {
+
+width: 80%;
+text-align: right;
+}
+
+
+
+.weatherBox2 {
+  width: 100%;
+  height: auto;
+  border-top: solid 3px lightblue;
+  padding-top: 8px;
+  
+}
+
+
+
+
+
+
+h5 {
+  margin-left: 20px;
+}
+
+.weatherBox3 {
+  width: 100%;
+  display: flex;
+}
+
+.weatherBox3A {
+  width: 25%;
+  height: 100%;
+}
+
+.weatherBox3B {
+  width: 15%;
+  padding-top: 10px;
+}
+
+.weatherBox3B div {
+  text-align: left;
+}
+
+.weatherBox3Bmax {
+  font-size: 40px;
+} 
+
+.weatherBox3Bmin {
+  font-size: 30px;
+} 
+
+.weatherBox3C {
+  width: 60%;
+  margin-left: 15px;
+  padding-left: 10px;
+}
+
+.weatherBox3Bmax {
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+.weatherBox3C p {
+  font-size: 20px !important;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.weatherBox4 {
+  width: 100%;
+  height: 16vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 5px;
+  grid-column-gap: 20px;
+}
+
+.weatherBox4A {
+  height: 75px;
+  display: flex;
+  width: 80px;
+  border: solid 2px  #496e6f ;
+  margin: 1px;
+  color: #0f1a0f;
+  text-shadow:rgb(229, 222, 224) 0.1em 0.1em 0.2em;
+  margin-bottom: 1px; 
+}
+
+.weatherBox4A1 {
+width: 60%;
+height: 100%;
+}
+
+.weatherBox4A1 div {
+  font-size: 15px;
+  text-align: center;
+}
+
+.weatherBox4A1 img {
+ width: 50px;
+ height: 50px;
+}
+
+.weatherBox4A2 {
+width: 40%;
+height: 100%;
+padding-top: 16%
+}
+
+.weatherBox4A2 div {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.weatherBox4A2B {
+  font-size: 20px !important;
+}
+
+/* Border  */
+.b01d {
+  /* clear sky */
+  border-bottom: solid 5px skyblue;
+}
+
+.b02d {
+  /* few clouds */
+  border-bottom: solid 5px green;
+}
+
+.b03d {
+  /* 	scattered clouds */
+  border-bottom: solid 5px  rgb(192, 231, 207);
+}
+
+.b04d {
+  /* broken clouds */
+  border-bottom: solid 5px  rgb(237, 221, 221);
+}
+
+.b09d {
+  /* shower rain */
+  border-bottom: solid 5px  pink;
+}
+
+.b10d {
+  /* rain */
+  border-bottom: solid 5px  violet;
+}
+
+.b11d {
+  /* 	thunderstorm */
+  border-bottom: solid 5px   purple;
+}
+
+.b13d {
+  /* snow */
+  border-bottom: solid 5px   beige;
+}
+
+.b50d {
+  /* 	mist */
+  border-bottom: solid 5px   rgb(217, 217, 215);
+}
+
+/*------------------ */
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .bg-light {
+  background-color: bisque !important;
+}
+
+.bg-white {
+  background-color: beige !important;
+} */
+
+.corazon img {
+   margin-left: 5px; 
+}
+
+.covid img {
+  margin-left: 4px;
+}
+
+#newCases, #newDeaths, #newRecovered, #totalCases, #totalDeaths, #totalRecovered {
+  width: 35%;
+  text-align: center;
+}
+
+/*  */
+ article {
+  height: 50vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+ article div {
+padding: 10px;
+}
+
+article div img {
+  float: left;
+  margin-right: 10px;
+  border: solid 1px black;
+}
+
+article div p {
+  text-align: justify;
+  min-height: 100px;
+}
+
+
+
+
+
+
+/* Media querys */
+
+@media only screen and (max-width: 1025px) and (min-width: 1023px)  {
+  .weatherContainer {   
+    height: 64vh; 
+  }
+  article p {
+    font-size: 10px;
+  }
+  .wiki{
+   top: 0;
+  }
+}
+
+@media only screen and (max-width: 281px) {
+  .weatherContainer { 
+    height: 84vh !important;
+  }
+  .modal {
+    top: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .weatherContainer {   
+    height: 65vh; 
+  }
+
+  .selectcontainer{
+     right: 13%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .weatherContainer {   
+    height: 65vh; 
+  }
+
+.modal {
+  top: 10%;
+}
+.weatherBox4 {
+  width: 100%;
+  height: 16vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 5px;
+}
+
+.weatherBox4A {
+  width: 100px;
+  height: 80px;
+}
+
+.b01d, .b02d, .b03d, .b04d, .b09d, .b10d, .b11d ,.b13d, .b50d {
+  border-width: 5px;
+}
+
+.weatherBox4A2 {
+ padding-top: 13% 
+}
+
+article p {
+  font-size: 10px;
+}
+
+option {
+  font-size: 10px;
+} 
+}
+
+
+
+
+
+
+

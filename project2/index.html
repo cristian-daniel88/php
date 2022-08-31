@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
+  
+  <title>Company Directory</title>
+  <!-- Bootstrap & FontAwesone-->
+  <link rel="stylesheet" href="libs/bootstrap-5.1.3/css/bootstrap.min.css">
+  <script src="libs/fontAwesone/fontAwesoneII.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="libs/css/style.css">
+  <!-- autocomplete -->
+  <link rel="stylesheet" href="libs/autocomplete/fuzzycomplete.min.css">
+
+  <!--  -->
+  
+</head>
+<body>
+  <div id="preloader"></div>
+  <!-- Modal Add  -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-light">
+        <div class="modal-header bg-primary">
+          <h3 class="text-white"><i class="fa-solid fa-user-plus  text-white"> </i>&nbsp; &nbsp; &nbsp;Add Contact </h3>
+          <button type="button" class="btn-close btn-close-white clearAddEmployeeModal" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+
+            <label>First name: <span class="spanAddEmployeeFn text-danger"></span></label>
+            <input type="search" class="form-control fnameInputAdd"> 
+
+            <label>Last Name: <span class="spanAddEmployeeLn text-danger"></span></label>
+            <input type="text" class="form-control lnameInputAdd">
+
+            <label>Email: <span class="spanAddEmployeeEmail text-danger"></span></label>
+            <input type="email" class="form-control emailInputAdd">
+
+            <label>Department: <span class="spanAddEmployeeDepartment text-danger"></span></label>
+            <select type="text" class="form-control departmentInputAdd" id="departmentInputAddID">
+              <option value="null">--</option>
+            </select>
+
+            <label>Location:</label>
+            <select type="text" class="form-control locationInputAdd" id="locationInputAddID"></select>
+            
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary me-5  yesAdd">Add</button>
+              <button type="button" class="btn btn-primary modal-botton clearAddEmployeeModal" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+         </form>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Filter -->
+  <div class="modal fade" id="staticBackdropFilter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-light">
+        <div class="modal-header bg-success">
+          <h3 class="text-white"> <i class="fa-solid fa-filter text-white"></i> &nbsp; Filter</h3>
+          <button type="button" class="btn-close btn-close-white closeFilter" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="filterBox">
+            <form action="">
+              <label for="">Location:</label>
+              <select name="" id="selectLocation" class="form-control">
+                <option value="all">All</option>
+                
+              </select>
+              <br>
+              <label for="">Department:</label>
+              <select name="" id="selectDepartment" class="form-control">
+                <option value="all">All</option>
+                
+              </select>
+              <br>
+              <div class="containerButtonSearch">
+                <button class="btn btn-success buttonSearch" type="submit">Search</button>
+              </div>
+            </form>
+          </div> 
+        </div>
+      </div>
+
+    
+    </div>
+  </div>
+  </div>
+
+<!-- Modal Location -->
+ <!--Add Location  -->
+ <div class="modal fade" id="staticBackdropAddLocation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+ aria-labelledby="staticBackdropLabel" aria-hidden="true">
+ <div class="modal-dialog">
+  <div class="modal-content bg-light">
+    <div class="modal-header bg-white">
+      <h3 class="text-dark"><i class="fa-solid fa-earth-americas text-info"></i> &nbsp; Add Location</h3>
+      <button type="button" class="btn-close btn-close-blue" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form  class="form-addLocation bg-light" >
+        <label for="">Location <span class="label-addLocationInLocation text-danger"></span></label>
+        <input type="text" class="form-control" id="inputAddLocationInLocation">
+        <br>
+        <br>
+        <button class="btn btn-success" id="submitNewLocation" type="submit">Add</button>
+      </form>    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary close-addLocation" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+    </div>
+   </div>
+   </div>
+
+   <!-- Delete Location -->
+   <div class="modal fade" id="staticBackdropDeleteLocation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content bg-light">
+    <div class="modal-header bg-white">
+      <h3 class="text-dark"><i class="fa-solid fa-earth-americas text-info"></i> &nbsp; Delete Location</h3>
+      <button type="button" class="btn-close btn-close-blue" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="deleteBox">
+        <div class="bg-primary">
+          <button class="cancel-deleteLocation" type="button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <p><b id="deleteRecord">Do you want to delete this record?</b></p>
+
+        <button type="button" class="btn btn-primary  me-5 cancel-deleteLocation" id="notDeleteLocation">No</button>
+        <button type="button" class="btn btn-primary  me-5 cancel-deleteLocation" id="okNotDeleteLocation">OK</button>
+        <button type="button" class="btn btn-success" id="deleteLocation">Yes</button>
+      </div>   
+     </div>
+     
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary cancel-deleteLocation" data-bs-dismiss="modal">
+          Cancel
+        </button> -->
+      </div>
+    </div>
+    </div>
+   </div>
+   </div>
+   
+   <!-- Edit Location -->
+   <div class="modal fade" id="staticBackdropEditLocation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog">
+   <div class="modal-content bg-light">
+     <div class="modal-header bg-white">
+       <h3 class="text-dark"><i class="fa-solid fa-earth-americas text-info"></i> &nbsp; Edit Location</h3>
+       <button type="button" class="btn-close btn-close-blue cancelEditInLocation" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+
+     <div class="modal-body">
+       <form  class="form-editLocation bg-light" >
+        <label for="">Location: <span class="label-editLocationInLocation text-danger"></span></label>
+        <input type="text" class="form-control" id="inputEditLocationInLocation">
+        <br>
+        <br>
+        <button class="btn btn-success" id="editLocationAdd" type="submit">Add</button>
+       </form>
+
+       <div class="editBox">
+        <div class="bg-primary">
+          <button class="cancelEditInLocation" type="button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <p><b>Do you want to save the changes?</b></p>
+
+        <button type="button" class="btn btn-primary  me-5 cancelEditInLocation">No</button>
+        <button type="button" class="btn btn-success cancelEditInLocation locationEdited" >Yes</button>
+      </div>   
+      </div>
+      
+      
+       <div class="modal-footer modal-footer_edit">
+         <button type="button" class="btn btn-primary cancel-deleteLocation" data-bs-dismiss="modal">
+           Cancel
+         </button>
+       </div>
+     </div>
+     </div>
+    </div>
+    </div>
+
+
+   <!--  -->
+
+ <div class="modal fade" id="staticBackdropLocation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-light">
+      <div class="modal-header bg-white">
+        <h3 class="text-dark"><i class="fa-solid fa-earth-americas text-info"></i> &nbsp; Location</h3>
+        <button type="button" class="btn-close btn-close-blue" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+           <div class="modal-body">
+            <div class="modal-body_header2">
+               <div>
+                <button type="button" class="buttonAddLocation" data-bs-toggle="modal" data-bs-target="#staticBackdropAddLocation"
+                >
+                <i class="fa-solid fa-file-circle-plus text-muted"></i>
+               </button>
+               </div>
+
+              <div class="containerButtonMobilEdit">
+                
+                <button type="button" class="buttonDeleteLocation me-3" data-bs-toggle="modal" 
+                data-bs-target="#staticBackdropDeleteLocation">
+                <i class="fa-solid fa-trash-can text-muted"></i>
+                </button>
+                
+                <button type="button" class="buttonEditLocation me-3" data-bs-toggle="modal" 
+                data-bs-target="#staticBackdropEditLocation">
+                  <i class="fa-solid fa-file-pen text-muted"></i>
+                </button>
+                
+              </div>
+              
+            </div>
+            <form class="form-chooseLocation">
+              <label>Location:</label>
+              <select class="form-control" id="selectChooseLocationForPrint">
+                <option value="null">--</option>
+              </select>
+            </form>
+
+             <div class="tableLocations">
+
+               <table class="table">
+                 <thead>
+                   <tr>
+                     <th scope="col" id="thDeparmentsTable">Departments:</th>   
+                     <th scope="col" id="thEmployeesTableForLocation">Employees:</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyTableDeparments">   
+                        <tr>
+                          
+                        </tr>
+                   </tbody>
+
+                </table>
+               
+          </div>
+          
+               
+           </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Department -->
+<button data-bs-toggle="modal" 
+data-bs-target="#staticBackdropDeleteDepartment" id="deleteDepartmentButton"></button>
+ <!-- Add -->
+ <div class="modal fade" id="staticBackdropAddDepartment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content bg-light">
+  <div class="modal-header bg-white">
+    <h3 class="text-dark"><i class="fa-solid fa-building"></i>&nbsp; Add Department</h3>
+    <button type="button" class="btn-close btn-close-blue closeAddDeparmentModal" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <div class="modal-body">
+
+    <form class="form-addDepartment">
+      <label for="">Department: &nbsp;<span class="text-danger spanForAddDepartment"></span></label>
+      <input type="text" class="form-control" id="inputLocationForAddDepartment">
+      <label for="">Location:</label>
+      <select class="form-control" id="selectLocationForAddDepartment">
+       <option value="null">--</option>
+      </select>
+      <br>
+   
+      <button class="btn btn-success" id="submitAddDepartment">Add</button>
+    </form>
+      <br>
+  
+
+  
+   
+   
+    <div class="modal-footer modal-footer_edit">
+      <button type="button" class="btn btn-primary closeAddDeparmentModal cancelModalDepartment" data-bs-dismiss="modal">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+  </div>
+ </div>
+ </div>
+  <!-- Edit -->
+ <button  data-bs-toggle="modal" data-bs-target="#staticBackdropEditDepartment" id="editDepartmentModalButton"></button> 
+<div class="modal fade" id="staticBackdropEditDepartment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content bg-light">
+  <div class="modal-header bg-white">
+    <h3 class="text-dark"><i class="fa-solid fa-building"></i>&nbsp; Edit Department</h3>
+    <button type="button" class="btn-close btn-close-blue closeEditDepartment cancelEditDepartment" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <div class="modal-body">
+    
+    <form class="form-editDepartment">
+      <label for="">Department: <span class="text-danger spanForEditDepartment"></span></label>
+      <input type="" class="form-control closeEditDepartment" id="inputEditDepartmentModal">
+      <label for="">Location:</label>
+      <select class="form-control closeEditDepartment" id="selectEditDepartmentModal">
+        
+      </select>
+      <br>
+      <br>
+      <button class="btn btn-success" id="editDeparmentButton">Edit</button>
+    </form>
+
+    <div class="deleteBox editPopUpDepartment">
+      <div class="bg-primary">
+        <button class="cancelEditDepartment cancelEditDepartment" type="button">
+          <i class="fa-solid fa-xmark "></i>
+        </button>
+      </div>
+      <p><b id="">Do you want to save the changes?</b></p>
+      <button type="button" class="btn btn-primary  me-4 cancelEditDepartment">No</button>
+      <button type="button" class="btn btn-success" id="yesEditDepartmentModal">Yes</button>
+    </div>
+    </div>
+   
+    <div class="modal-footer modal-footer_edit">
+      <button type="button" class="btn btn-primary closeEditDepartment cancelEditDepartment cancelModalDepartment" data-bs-dismiss="modal">
+        Cancel
+      </button>
+    </div>
+  </div>
+  </div>
+ </div>
+ </div>
+ <!-- Delete -->
+ <div class="modal fade" id="staticBackdropDeleteDepartment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content bg-light">
+  <div class="modal-header bg-white">
+    <h3 class="text-dark"><i class="fa-solid fa-building"></i>&nbsp;Delete Department</h3>
+    <button type="button" class="btn-close btn-close-blue" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+
+  <div class="modal-body">
+    
+    <div class="deleteBox">
+      <div class="bg-primary">
+        <button class="noDeleteDepartment cancelModalDepartment" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p><b id="questionDeleteDepartment">Do you want to delete this record?</b></p>
+      <button type="button" class="btn btn-primary  me-4 noDeleteDepartment cancelModalDepartment" id="noDeleteDepartmentID">No</button>
+      <button type="button" class="btn btn-success" id="yesDeleteDepartment">Yes</button>
+    </div>
+    </div>
+   
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-primary noDeleteDepartment cancelModalDepartment" data-bs-dismiss="modal">
+        Cancel
+      </button> -->
+    </div>
+  </div>
+  </div>
+ </div>
+ </div>
+
+ <!--  -->
+
+  <div class="modal fade" id="staticBackdropDepartment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-light">
+      <div class="modal-header bg-white">
+        <h3 class="text-dark"><i class="fa-solid fa-building"></i> &nbsp; Department</h3>
+        <button type="button" class="btn-close btn-close-blue" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+           <div class="modal-body">
+            <button class="buttonAddDepartment" data-bs-toggle="modal" 
+            data-bs-target="#staticBackdropAddDepartment">
+              <i class="fa-solid fa-file-circle-plus text-muted"></i> 
+            </button>
+            <br>
+            <br>
+            <form class="form-chooseDepartment">
+              <label>Department</label>
+              <select id="selectDepartmentForDeleteAndEdit" class="form-control">
+               <option value="null">--</option>
+              </select>
+            </form>
+
+            <div class="table-deparment">
+              <table class="table">
+                <tr>
+                  <th scope="col">Deparment</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Action</th>
+                </tr>
+                
+                <tbody id="tbodyDeparmentsForEditAndDelete">
+                  
+                </tbody>
+              </table>
+            </div>
+           </div>
+
+          
+           
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  
+
+
+  <!-- Modal Profile For Mobil -->
+
+  <button type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdropContact"
+    id="modalContactMobilProfile"></button>
+  <div class="modal fade" id="staticBackdropContact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-light">
+        <div class="modal-header bg-primary">
+          <h3 class="text-white"> <i class="fa-solid fa-user-large text-white"></i> &nbsp; Profile</h3>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="containerButtonMobil">
+            <button class="fa-file-pen_button-mobile">
+              <i class="fa-solid fa-file-pen text-muted"></i>
+            </button>
+            <button class="fa-circle-xmark_button-mobile">
+              <i class="fa-solid fa-trash-can text-muted"></i>
+            </button>
+          </div>
+          <div class="data-profile data-profile_mobil">
+            <p class="firstNameProfile"></p>
+            <p class="lastNameProfile"></p>
+            <p class="emailProfile"></p>
+            <p class="departmentProfile"></p>
+            <p class="locationProfile"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary modal-botton" data-bs-dismiss="modal"
+            id="cancelModalContactMovil">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+  <!-- Modal Edit For Mobil -->
+  <button type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit"
+    id="modalContactMobilEdit"></button>
+  <div class="modal fade" id="staticBackdropEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-light">
+        <div class="modal-header bg-primary">
+          <h3 class="text-white"> <i class="fa-solid fa-file-pen text-white"></i> &nbsp; Edit</h3>
+          <button type="button" class="btn-close btn-close-white btn-close-edit_mobil" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+         
+
+          <form class="">
+
+            <div class="inputsEditMobil">
+              <label for="">First name <span class="spanFirstNameProfileInput text-danger"></span></label>
+              <input type="text" class="form-control firstNameProfileInput">
+
+              <label for="">Last name <span class="spanLastNameProfileInput text-danger"></span></label>
+              <input type="text" class="form-control lastNameProfileInput">
+
+              <label for="">Email <span class="spanEmailProfileInput text-danger"></span></label>
+              <input type="email" class="form-control emailProfileInput">
+
+              <label for="">Department</label>
+              <select type="text" class="form-control departmentProfileInput" id="selectEditDepartmentPersonPhone">
+                
+              </select>
+
+              <!-- <label for="">Location</label>
+              <select type="text" class="form-control locationProfileInput" id="selectEditLocationPersonPhone"></select> -->
+
+              <div class="modal-footer">
+                <button class="btn btn-primary areyouSureMobil me-5" type="submit">Save</button>
+                <button type="button" class="btn btn-primary ms-lg-4 areyouSureCancelMobil" data-bs-dismiss="" id="">Cancel</button>
+              </div>
+            </div>
+
+              <!-- Modal  -->
+              
+            <div class="areyouSure">
+             <div class="bg-primary">
+              <button class="cancelInfoEdit" type="button">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+             <p><b id="editConfirm">Do you want to save the changes?</b></p>
+
+             <button type="button" class="btn btn-primary me-5 modal-botton noEditMobil">No</button>
+             <button type="button" class="btn btn-success  yesEdit" id="">Yes</button>
+             </div>
+               
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Delete Mobil -->
+ <button type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete" id="modalContactMobilDelete"></button>
+ <div class="modal fade" id="staticBackdropDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-light">
+      <div class="modal-header bg-primary">
+        <h3 class="text-white"> <i class="fa-solid fa-trash-can text-white"></i> &nbsp; Delete</h3>
+        <button type="button" class="btn-close btn-close-white btn-close-edit_mobil" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+           <div class="modal-body">
+
+            <div class="deleteBox">
+              <div class="bg-primary">
+                <button class="cancelInfoEdit cancelDeleteMobil" type="button" id="">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <p><b id="deletePersonContactPhone">Do you want to delete this record? mobil</b></p>
+
+              <button type="button" class="btn btn-primary  me-5 cancelInfoDelete cancelDeleteMobil">No</button>
+              <button type="button" class="btn btn-success yesDelete" id="">Yes</button>
+            </div>   
+           </div>
+
+
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+
+  <!------------------------------------Desktop----------------------------------------->
+
+  <div class="container-main">
+
+    <div class="container-directory bg-body">
+      <div class="container-directory_nav-father">
+        <div class="top"></div>
+         
+        <div class="container-directory_nav-phone">
+
+          <button type="button" class="addContact" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="">
+            <i class="fa-solid fa-user-plus text-primary"></i>
+          </button>
+          
+          <button type="button" class="fa-filter_button" data-bs-toggle="modal" data-bs-target="#staticBackdropFilter">  
+            <i class="fa-solid fa-filter text-success"></i>
+          </button>
+          
+          <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropLocation" class="buttonLocation buttonLocationII"
+           id="locationButtonDesktop"
+          >
+            <i class="fa-solid fa-earth-americas text-info"></i>
+            
+            
+          </button>
+          
+          <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropDepartment" id="departmentButtonModal" class="buttonDepartmentII">
+            <i class="fa-solid fa-building"></i>
+          </button>
+
+        </div>
+        
+        <div class="container-directory_nav">
+
+          <form class="input-group mb-3" id="search">
+            <input type="text" class="form-control" id="searchNav" list="datalistSearch" autocomplete="off" placeholder="Search Employee">
+              <datalist id="datalistSearch">
+                  
+              </datalist>
+
+            <button class="btn btn-outline-primary" type="submit" id="button-addon1"><i
+                class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+
+          <div class="container-directory_button">
+           
+            <button type="button" class="addContact" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="">
+              <i class="fa-solid fa-user-plus text-primary"></i>
+            </button>
+           
+            <button type="button" class="fa-filter_button" data-bs-toggle="modal" data-bs-target="#staticBackdropFilter">  
+              <i class="fa-solid fa-filter text-success"></i>
+            </button>
+
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropLocation" class="buttonLocationII">
+              <i class="fa-solid fa-earth-americas text-info"></i>
+            </button>
+            
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropDepartment" class="buttonDepartmentII">
+              <i class="fa-solid fa-building"></i>
+            </button>
+             
+          </div>
+
+        </div>
+        
+        <div class="header_table bg-light">
+          <div class="header_table-name">Full name </div>
+          <div class="header_table-department">Department</div>
+          <div class="header_table-email">Email</div>
+        </div>
+
+      </div>
+
+
+      <!-- Table -->
+      <table class="table">
+          <tbody id="tbody"></tbody>
+
+      </table>
+
+
+    </div>
+
+
+
+    <!-- Profile Contact Desktop -->
+    <div class="container-profile bg-light border">
+      <div class="container-profile_box border" id="containerProfile">
+        <div class="container-contact_icon" id="container-contact_icon">
+          <i class="fa-solid fa-address-card "></i>
+          <br>
+          <p>Select a contact to see their info.</p>
+        </div>
+        <div id="infoDesktop">
+          <div class="header-profile_box bg-light.bg-gradient border-bottom-0">
+            <button class="fa-file-pen_button">
+              <i class="fa-solid fa-file-pen text-muted"></i>
+            </button>
+            <button class="fa-trash-can_button">
+              <i class="fa-solid fa-trash-can text-muted"></i>
+            </button>
+            <div class="header-photo bg-light border-secondary">
+              <i class="fa-solid fa-user-large text-secondary"></i>
+            </div>
+            </div>
+
+          <!-- Delete -->
+
+        <form action="" method="post" class="delete body-profile_box-delete">
+
+            <div class="deleteBox">
+              <div class="bg-primary">
+                <button class="cancelDelete" type="button">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <p><b id="deletePersonContactDesktop">Do you want to delete this record? desktop</b></p>
+              <button type="button" class="btn btn-primary  me-4 cancelInfoDelete" id="cancelInfo">No</button>
+              <button type="button" class="btn btn-success yesDelete" id="">Yes</button>
+            </div>
+            </div>
+
+        </form>
+
+        <!-- Edit -->
+        <form class="body-profile_box" action="" method="post">
+
+          <div class="data-profile">
+            <p class="firstNameProfile"></p>
+            <p class="lastNameProfile"></p>
+            <p class="emailProfile"></p>
+            <p class="departmentProfile"></p>
+            <p class="locationProfile"></p>
+          </div>
+          <div class="inputsEdit">
+
+            <label for="">First name: <span class="spanFirstNameProfileInput text-danger"></span></label>
+            <input type="text" class="form-control firstNameProfileInput" id="firstNameProfileInputDesktop">
+
+            <label for="">Last name: <span class="spanLastNameProfileInput text-danger"></span></label>
+            <input type="text" class="form-control lastNameProfileInput" id="lastNameProfileInputDesktop">
+
+            <label for="">Email <span class="spanEmailProfileInput text-danger"></span></label>
+            <input type="email" class="form-control emailProfileInput" id="emailProfileInputDesktop">
+
+            <label for="">Department</label>
+            <select type="text" class="form-control departmentProfileInput" id="selectEditDepartmentPersonDesktop">
+              
+            </select>
+<!-- 
+            <label for="">Location</label>
+            <select type="text" class="form-control locationProfileInput" id="selectEditLocationPersonDesktop"></select> -->
+
+          </div>
+
+          <div class="areyouSure">
+            <div class="bg-primary">
+              <button class="noSaveEdit" type="button">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <p><b id="editConfirm">Do you want to save the changes?</b></p>
+
+            <button type="button" class="btn btn-primary  me-4  noSaveEdit" id="">No</button>
+            <button type="button" class="btn btn-success yesEdit" id="">Yes</button>
+          </div>
+
+          <div class="containerButton">
+            <button type="button" class="btn btn-primary  me-4 cancelInfoEdit" id="">Cancel</button>
+            <button type="submit" class="btn btn-success saveInfo" id="">Save</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap & Jquery -->
+  <script src="libs/bootstrap-5.1.3/js/bootstrap.min.js"></script>
+  <script src="libs/js/jquery-2.2.3.min.js"></script>
+  <!-- autocomplete -->
+  <script src="libs/autocomplete/fuse.min.js"></script>
+  <script src="libs/autocomplete/fuzzycomplete.min.js"></script>
+  <!-- Code -->
+  <script src="libs/js/index.js"></script>
+</body>
+
+</html>

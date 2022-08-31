@@ -1,0 +1,524 @@
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+  }
+  #preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #f2f2f2;
+    border-top: 6px solid #56829e;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+  }
+  
+  @-webkit-keyframes animate-preloader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes animate-preloader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+#modalContactMobilProfile, #modalContactMobilEdit,
+#modalContactMobilDelete, #editDepartmentModalButton,
+#modalDeleteLocationButton,
+#deleteDepartmentButton
+{
+    display: none;
+}
+
+#tbody tr {
+    cursor: pointer;
+}
+
+#search {
+    width: 90% !important ;
+}
+
+.container-main {
+    display: flex;
+}
+p {
+    overflow-wrap: break-word;
+}
+
+.container-directory {
+    width: 70%;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.top {
+    width:50px;
+    height:5px;
+    background-color:white
+}
+
+.container-directory_nav-father {
+    width: 100%;
+    background-color: white;
+    position:sticky;
+    top: -1px;
+    z-index: 5;
+    padding-top: 10px;
+} 
+
+.container-directory_nav {
+    display: flex;
+    align-items: center;
+    background-color: white;   
+}
+
+.container-directory_button {
+    width: 25%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
+}
+
+.container-directory_button button, .container-directory_nav-phone button {
+    background:transparent !important;
+    border:none;
+}
+
+.container-directory_button button i{
+    font-size: 25px;   
+}
+
+.container-directory_nav-phone {
+    font-size: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:end;
+}
+
+.container-directory_nav-phone button  {
+margin:5px;
+}
+
+.container-directory_button button:active, .container-directory_nav-phone button:active {
+    opacity: .5;
+}
+
+.container-profile {
+    width: 30%; 
+    display: flex;
+    justify-content: center;
+    padding-top: 30px; 
+}
+
+.container-profile_box {
+    width: 80%;
+    height: 90vh;
+    position:sticky;
+    background-color: white;
+    top: 40px;
+    border-radius: 10px;   
+}
+
+.container-contact_icon {
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.fa-address-card {
+    color: #afcdd7;
+    font-size: 160px;    
+}
+
+.letter {
+    font-weight: 700;
+    font-size: 20px;
+    margin-left:10px;
+}
+
+
+
+.th-th0{
+    top: 110px;
+    height: 80px;   
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color:white;
+    font-weight:700;
+    font-size: 25px;
+    position:sticky;
+    /* z-index:50; */
+}
+
+.header_table {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items:center;
+    font-weight: 700;
+    border-bottom: solid 1px black;   
+}
+
+.header_table-name {
+    width: 40%;
+}
+
+.header_table-email, .header_table-department {
+    width: 30%;   
+}
+
+/* Header Profile Desktop */
+
+.header-profile_box {
+    width:100% !important;
+    height: 120px;
+    background-color:rgb(204 226 247);
+    position: relative;
+    display: flex;
+    justify-content:center;
+}
+
+.containerButtonMobil {
+    display: flex;
+    justify-content:end;
+}
+
+.fa-circle-xmark_button-mobile{
+    font-size: 35px;
+    cursor: pointer;
+    border:none;
+    background: transparent; 
+    
+}
+
+.fa-file-pen_button-mobile, .buttonAddLocation, 
+.buttonDeleteLocation, .buttonEditLocation, .buttonAddDepartment {
+    font-size: 35px;
+    cursor: pointer;
+    border:none; 
+    background: transparent;
+}
+
+.buttonEditDeparmentmin, .buttonDeleteDeparmentmin {
+    font-size: 20px;
+    cursor: pointer;
+    border:none; 
+    background: transparent;
+}
+
+
+.fa-file-pen_button{
+    font-size: 30px;
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    cursor: pointer;
+    border:none; 
+    background: transparent;
+}
+
+.fa-trash-can_button {
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    border:none;  
+    background: transparent;
+}
+
+.fa-trash-can_button-mobile {
+    font-size: 30px;
+    position: absolute;
+    right: 70px;
+    bottom: -50px;
+    cursor: pointer;
+    border:none;  
+    background: transparent;
+}
+
+.fa-trash-can_button:active , .fa-file-pen_button:active, 
+.fa-trash-can_button-mobile:active, .fa-file-pen_button-mobile:active,
+.fa-circle-xmark_button-mobile:active,
+.buttonAddLocation:active,
+.buttonDeleteLocation:active,
+.buttonEditLocation:active,
+.buttonAddDepartment:active,
+.buttonEditDeparmentmin:active,
+.buttonDeleteDeparmentmin:active
+{
+    opacity: .5;
+}
+
+.modal-body_header2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-chooseLocation, .form-chooseDepartment{
+margin-bottom: 20px;
+width: 75%;
+}
+
+.form-addLocation, .form-editLocation, .form-editDepartment  {
+    margin: auto;
+    margin-bottom:40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    width: 95%;
+    border: solid 4px  #dee2e6;;
+    padding: 15px;
+    border-radius: 3px;
+} 
+
+.form-addLocation button, .form-editLocation button, .form-editDepartment button {
+    margin: auto;
+    width: 50%;
+
+}
+
+.tableLocations, .table-deparment {   
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    display: flex;
+    padding-bottom: 50px;
+}
+
+.tableLocations tr {
+    height: 20px !important;
+}
+
+
+.header-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    border: double 4px #e3dcdc;
+    top: 70px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-photo i {
+    font-size: 50px;  
+}
+
+.body-profile_box, .body-profile_box-delete {
+    width: 80%;
+    margin:auto;
+    text-align: left;
+    margin-top: 80px;  
+    position: relative; 
+}
+
+
+ .containerButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+ }
+
+ .areyouSure, .deleteBox , .editBox, .deleteDepartmentBox{
+    /* height: 200px; */
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+    width: 100%;
+    border: solid 3px #dfd0d0;
+    border-radius: 2px;
+    margin-bottom: 50px;
+
+    padding-bottom: 10px;
+ }
+
+ .deleteBox p {
+    padding: 10px;
+ }
+
+ .deleteBox {
+    padding-bottom: 10px;
+ }
+
+ .areyouSure div, .deleteBox div, .editBox div {
+    width:100%;
+    height:50px;
+    display:flex;
+    justify-content:end;
+    margin-bottom: 20px;
+ }
+
+ .areyouSure div button, .deleteBox div button, .editBox div button {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+ }
+
+.inputsEdit {    
+    width:90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+/* Filter */
+
+.filterBox{
+    background-color: aliceblue;
+    width: 100%;
+    margin:auto;  
+    border: solid 1px grey;
+    height: 250px;
+    border-radius: 2px;      
+}
+
+.filterBox form {
+    padding: 10px; 
+}
+
+.close-filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+} 
+
+.filterBox div  b {
+   display: block;
+}
+
+.filterBox select, .filterBox label{
+    width:90%;
+    margin: auto;
+    margin-left: 10px;
+}
+
+.containerButtonSearch{
+    display: flex;
+    justify-content: center;
+}
+
+
+.td-fullname {
+    width: 40%;
+}
+
+.td-email, .td-department {
+    width: 30%; 
+}
+
+.form-addDepartment {
+    width: 80% !important;
+    margin: auto;
+}
+
+.form-addDepartment button {
+    display: block;
+    margin: auto;   
+}
+
+.container-directory_nav-phone {
+    display: none !important;
+}
+
+/* Media Querys */
+
+@media only screen and (max-width: 830px) {
+    .container-directory_nav-phone {
+        display: flex !important;
+    }    
+
+   .container-directory_button {
+    display: none;
+   }
+   
+   .th-th0 { 
+    top: 180px;
+   }
+   .responsive {
+    display: block;
+   }
+   .inputsEdit {     
+       margin-top: 50px;
+   } 
+  .container-profile {
+    display: none;
+   }
+  .container-directory {
+    width: 100%;
+   }
+  .container-directory_nav-father {
+    width: 100%;
+   }
+  .td-email {
+    display: none;
+   }
+  .td-fullname, .td-department {
+    width: 50% !important;
+   }  
+  .header_table-email {
+    display: none;
+   }
+   .header_table-name, .header_table-department {
+    width: 50%;
+   }
+}
+
+@media only screen and (max-width: 540px) { 
+    tbody {
+        font-size: 10px;
+    }
+}
+
+
+   
+@media only screen and (max-width: 300px) {
+    .header_table {
+        font-size: 12px;
+    }
+   .container-directory_button button i {
+        font-size: 18px;        
+    }
+    .container-directory {
+        width: 380px;
+    }   
+}
+
+
+
+ 
+
+
+
